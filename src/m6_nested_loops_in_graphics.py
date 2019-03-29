@@ -11,9 +11,8 @@ import rosegraphics as rg
 
 def main():
     """ Calls the other functions to demonstrate them. """
-    run_test_draw_L()
+    #run_test_draw_L()
     run_test_draw_wall_on_right()
-
 
 def run_test_draw_L():
     """
@@ -53,7 +52,6 @@ def run_test_draw_L():
 
     window.close_on_mouse_click()
 
-
 def draw_L(window, circle, r, c):
     """
     See   L.pdf   in this project for pictures that may
@@ -80,9 +78,43 @@ def draw_L(window, circle, r, c):
     and m and n are small, positive integers.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    origionalcirclecenterx = circle.center.x
+    origionalcirclecentery = circle.center.y
+
+    for k in range(r):
+        for j in range(3):
+            new_circle = rg.Circle(rg.Point(origionalcirclecenterx, origionalcirclecentery), circle.radius)
+            new_circle.fill_color = circle.fill_color
+            new_circle.attach_to(window)
+            window.render(.1)
+
+            origionalcirclecenterx = origionalcirclecenterx + 2*circle.radius
+        origionalcirclecentery = origionalcirclecentery + 2*circle.radius
+        origionalcirclecenterx = circle.center.x
+
+    for l in range(3):
+        for z in range(3):
+            new_circle = rg.Circle(rg.Point(origionalcirclecenterx, origionalcirclecentery), circle.radius)
+            new_circle.fill_color = circle.fill_color
+            new_circle.attach_to(window)
+            window.render(.1)
+
+            origionalcirclecenterx = origionalcirclecenterx + 2 * circle.radius
+        origionalcirclecentery = origionalcirclecentery
+        origionalcirclecenterx = circle.center.x
+
+    for g in range(3):
+        for z in range(c):
+            new_circle = rg.Circle(rg.Point(origionalcirclecenterx + circle.radius*6, origionalcirclecentery - (circle.radius*4)), circle.radius)
+            new_circle.fill_color = circle.fill_color
+            new_circle.attach_to(window)
+            window.render(.1)
+            origionalcirclecenterx = origionalcirclecenterx + 2 * circle.radius
+        origionalcirclecentery = origionalcirclecentery + 2*circle.radius
+        origionalcirclecenterx = circle.center.x
 
 
 def run_test_draw_wall_on_right():
@@ -125,6 +157,18 @@ def draw_wall_on_right(rectangle, n, window):
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
+    corner_1 = rectangle.corner_1
+    corner_2 = rectangle.corner_2
+    for j in range(n):  # Loop through the rows
+        for _ in range(n + 1):  # Loop through the columns
+            new_rectangle = rg.Rectangle(rectangle.corner_1, rectangle.corner_2)
+            new_rectangle.attach_to(window)
+            window.render(0.1)
+            corner_1 = rg.Point(corner_1.x - rectangle.get_width(), corner_1.y + rectangle.get_height())
+            corner_2 = corner_2 - rectangle.get_width()
+            #corner_2 = rg.Point(corner_2 - rectangle.get_width(), corner_2.y + rectangle.get_height()))
+        corner_1 = rg.Point(corner_1 - rectangle.get_width(), corner_1.y + rectangle.get_height())
+       # corner_2 = rg.Point(corner_2 - rectangle.get_width(), corner_2.y + rectangle.get_height()))
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
