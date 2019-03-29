@@ -159,16 +159,32 @@ def draw_wall_on_right(rectangle, n, window):
 
     corner_1 = rectangle.corner_1
     corner_2 = rectangle.corner_2
-    for j in range(n):  # Loop through the rows
-        for _ in range(n + 1):  # Loop through the columns
+
+    origional_x = corner_2.x
+    origional_y = corner_2.y
+
+    x = origional_x
+    y = origional_y
+
+    width = rectangle.get_width()
+    height = rectangle.get_height()
+
+    for j in range(n):
+        for _ in range(j + 1):
             new_rectangle = rg.Rectangle(rectangle.corner_1, rectangle.corner_2)
             new_rectangle.attach_to(window)
             window.render(0.1)
-            corner_1 = rg.Point(corner_1.x - rectangle.get_width(), corner_1.y + rectangle.get_height())
-            corner_2 = corner_2 - rectangle.get_width()
+            print(corner_1)
+            corner_1.x = corner_1.x - (width)
+        corner_1.y = corner_1.y + j*(height)
+        corner_1.x = origional_x
+
+#            corner_2 = corner_2 - int(rectangle.get_width())
             #corner_2 = rg.Point(corner_2 - rectangle.get_width(), corner_2.y + rectangle.get_height()))
-        corner_1 = rg.Point(corner_1 - rectangle.get_width(), corner_1.y + rectangle.get_height())
+        #corner_1 = rg.Point(corner_1 - rectangle.get_width(), corner_1.y + rectangle.get_height())
        # corner_2 = rg.Point(corner_2 - rectangle.get_width(), corner_2.y + rectangle.get_height()))
+
+
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
