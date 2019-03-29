@@ -116,7 +116,7 @@ def multiply_numbers(sequence_of_lists):
        [FYI: This 'can be multiplied ...' is an example of DUCK TYPING.]
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #  ** READ THE TESTS that have been written for you (ABOVE).
     #  ** ASK QUESTIONS if you do not understand the TESTS (ABOVE).
     #
@@ -127,15 +127,17 @@ def multiply_numbers(sequence_of_lists):
     #             to loop through it in the INNER loop.
     #        -- See   m2e_nested_loops_in_sequences   as needed.
     # ------------------------------------------------------------------
-    for k in range(len(sequence_of_lists)):
-        for _ in range(sequence_of_lists[k]):
-            sequence_of_lists[k] = sequence_of_lists[k]
+    for j in range(len(sequence_of_lists)):
+        sublist = sequence_of_lists[j]
+        for k in range(len(sublist)):
+            sublist[k] = sublist[k] *(j+1)
+
 
 
 def run_test_sum_numbers():
     """ Tests the    sum_numbers    function. """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # DONE: 3. Implement this TEST function.
     #   It TESTS the  sum_numbers  function defined below.
     #   Include at least **   3   ** tests (we wrote two for you).
     # ------------------------------------------------------------------
@@ -155,6 +157,18 @@ def run_test_sum_numbers():
     print('Expected and actual are:', expected, answer)
 
     # TO DO 3 (continued): Add your ADDITIONAL test(s) here:
+    # Test 3:
+    expected = 135
+    answer = sum_numbers(([7,12,16], [50], [45,5]))
+    print('Expected and actual are:', expected, answer)
+    # Test 4:
+    expected = 45
+    answer = sum_numbers(([9,8,7], [6,5], [4,3,2,1]))
+    print('Expected and actual are:', expected, answer)
+    # Test 5:
+    expected = 27
+    answer = sum_numbers(([1,2], [4,5], [7,8]))
+    print('Expected and actual are:', expected, answer)
 
 
 def sum_numbers(seq_seq):
@@ -168,10 +182,16 @@ def sum_numbers(seq_seq):
                     and each item in the subsequences is a number.
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
+    sum = 0
+    for k in range(len(seq_seq)):
+        sublist = seq_seq[k]
+        for l in range(len(sublist)):
+            sum = sublist[l] + sum
 
+    return sum
 
 def run_test_print_characters():
     """ Tests the    print_characters    function. """
@@ -219,11 +239,14 @@ def print_characters(sequence_of_strings):
     Precondition:  the given argument is a sequence of strings.
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #  ** READ THE TESTS that have been written for you (ABOVE).
     #  ** ASK QUESTIONS if you do not understand the TESTS (ABOVE).
     # ------------------------------------------------------------------
-
+    for k in range(len(sequence_of_strings)):
+        sublist = sequence_of_strings[k]
+        for l in range(len(sublist)):
+            print(sublist[l])
 
 def run_test_print_characters_slanted():
     """ Tests the    print_characters_slanted    function. """
@@ -272,14 +295,17 @@ def print_characters_slanted(sequence_of_strings):
     Precondition:  the given argument is a sequence of strings.
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #  ** READ THE TESTS that have been written for you (ABOVE).
     #  ** ASK QUESTIONS if you do not understand the TESTS (ABOVE).
     #
     # ** HINT: ** Consider using string multiplication for the spaces
     #             and string addition to stitch the spaces to the character.
     # ------------------------------------------------------------------
-
+    for k in range(len(sequence_of_strings)):
+        sublist = sequence_of_strings[k]
+        for l in range(len(sublist)):
+            print(l*' ', sublist[l])
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
